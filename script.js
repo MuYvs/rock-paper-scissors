@@ -16,3 +16,15 @@ function CompChoice(){
     }
     return choice;
 }
+
+function PlayerChoice() {
+    let player_choice = prompt("Choose Rock | Paper | Scissor").toLowerCase();
+    if (player_choice === 'rock' || player_choice === 'paper' || player_choice === 'scissor') {
+        return player_choice;
+    }
+    else {
+        PlayerChoice()
+    }
+}
+
+console.log(PlayerChoice())
