@@ -34,11 +34,11 @@ function CompareChoice (p_choice, c_choice) {
         alert(`Tie! Both You and the Computer Chose 'rock'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
     }
     else if (p_choice === 'rock' && c_choice === 'paper') {
-        computer_score =+ 1;
+        computer_score += 1;
         alert(`You Lose! You Chose 'rock' and the Computer Chose 'paper'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
     }
     else if (p_choice === 'rock' && c_choice === 'scissor') {
-        player_score =+ 1;
+        player_score += 1;
         alert(`You Win! You Chose 'rock' and the Computer Chose 'scissor'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
     }
 
@@ -50,7 +50,7 @@ function CompareChoice (p_choice, c_choice) {
         alert(`Tie! Both You and the Computer Chose 'paper'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
     }
     else if (p_choice === 'paper' && c_choice === 'scissor') {
-        computer_score =+ 1;
+        computer_score += 1;
         alert(`You Lose! You Chose 'paper' and the Computer Chose 'scissor'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
     }
 
@@ -67,4 +67,3 @@ function CompareChoice (p_choice, c_choice) {
     }
 }
 
-CompareChoice(PlayerChoice(), CompChoice())
