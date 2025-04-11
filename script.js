@@ -67,3 +67,13 @@ function CompareChoice (p_choice, c_choice) {
     }
 }
 
+while (player_score < 5 && computer_score < 5) {
+    CompareChoice(PlayerChoice(), CompChoice());
+}
+
+if (player_score >= 5) {
+    alert("You Won!");
+}
+else if (computer_score >= 5) {
+    alert("You Lost!");
+}
