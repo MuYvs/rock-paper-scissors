@@ -19,12 +19,40 @@ function CompChoice(){
     return choice;
 }
 
-let body = document.querySelector("body")
+let body = document.querySelector("body");
 let start_container = document.querySelector(".start-container");
 let play_button = document.querySelector("#start-button");
 
 play_button.addEventListener('click', function() {
     body.removeChild(start_container);
+})
+
+play_button.addEventListener('click', function() {
+    let game_container = document.createElement('div');
+    game_container.classList.add('container', 'game-container');
+
+    let best_of_header = document.createElement('h1');
+    best_of_header.textContent = "Best of 5";
+    game_container.appendChild(best_of_header);
+
+    let score_round_counter_container = document.createElement('div');
+    score_round_counter_container.classList.add('score-round-counter-container');
+
+    let player_score_counter = document.createElement('p');
+    player_score_counter.textContent = `Player Score: `;
+
+    let rounds_counter = document.createElement('p');
+    rounds_counter.textContent = `Round: `;
+
+    let computer_score_counter = document.createElement('p');
+    computer_score_counter.textContent = `Computer Score: `;
+
+    score_round_counter_container.appendChild(player_score_counter)
+    score_round_counter_container.appendChild(rounds_counter)
+    score_round_counter_container.appendChild(computer_score_counter)
+
+    game_container.appendChild(score_round_counter_container);
+    body.appendChild(game_container);
 })
 
 // function CompareChoice (p_choice, c_choice) {
