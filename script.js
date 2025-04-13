@@ -75,6 +75,16 @@ play_button.addEventListener('click', function() {
     buttons_container.appendChild(scissor_button);
     game_container.appendChild(buttons_container);
 
+    let game_status_container = document.createElement('div');
+    game_status_container.classList.add('game-status-container');
+    let win_loss = document.createElement('h2');
+    win_loss.classList.add('win-loss-header')
+    let game_status_text = document.createElement('p');
+    game_status_text.classList.add('game-status-text');
+
+    game_status_container.appendChild(win_loss);
+    game_status_container.appendChild(game_status_text);
+
     buttons_container.addEventListener('click', function(e) {
         target_button = e.target;
 
@@ -106,17 +116,24 @@ play_button.addEventListener('click', function() {
             case 'player win':
                 player_score += 1;
                 player_score_counter.textContent = `Player Score: ${player_score}`;
+                win_loss.textContent = "You won the round";
+                game_status_text.textContent = `You chose: ${player_choice}\r\nOpponent chose: ${computer_choice}`
                 break;
 
             case 'player loss':
                 computer_score += 1;
                 computer_score_counter.textContent = `Computer Score: ${computer_score}`;
+                win_loss.textContent = "You lost the round";
+                game_status_text.textContent = `You chose: ${player_choice}\r\nOpponent chose: ${computer_choice}`
                 break;
 
             case 'tie':
+                win_loss.textContent = "It's a tie";
+                game_status_text.textContent = `You chose: ${player_choice}\r\nOpponent chose: ${computer_choice}`
                 break;
         }
     })
+    game_container.appendChild(game_status_container);
     body.appendChild(game_container);
 })
 
