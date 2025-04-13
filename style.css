@@ -50,3 +50,9 @@ h1 {
     font-size: 25px;
     align-items: center;
 }
+.game-status-container {
+    text-align: center;
+}
+.game-status-text {
+    white-space: pre;
+}
