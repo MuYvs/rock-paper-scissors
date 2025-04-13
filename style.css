@@ -22,3 +22,18 @@ body {
     width: 100%;
     height: 30px;
 }
+h1 {
+    text-align: center;
+}
+.game-container {
+    width: 500px;
+}
+.score-round-counter-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+}
