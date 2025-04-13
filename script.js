@@ -91,7 +91,7 @@ play_button.addEventListener('click', function() {
     game_container.appendChild(game_status_container);
     game_container.appendChild(game_status_container);
 
-    buttons_container.addEventListener('click', function(e) {
+    buttons_container.addEventListener('click', function activeButtons(e) {
         target_button = e.target;
 
         let player_choice = '';
@@ -144,9 +144,17 @@ play_button.addEventListener('click', function() {
                 game_status_text.textContent = `You chose: ${player_choice}\r\nOpponent chose: ${computer_choice}`
                 break;
         }
+        if(player_score >= 5) {
+            buttons_container.removeEventListener('click', activeButtons);
+            win_loss.textContent = "You Won The Game!";
+        }
+        else if(computer_score >= 5) {
+            buttons_container.removeEventListener('click', activeButtons);
+            win_loss.textContent = "You Lost The Game!";
+        }
     })
 
-    
+
     body.appendChild(game_container);
 })
 
