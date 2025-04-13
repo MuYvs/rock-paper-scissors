@@ -39,13 +39,13 @@ play_button.addEventListener('click', function() {
     score_round_counter_container.classList.add('score-round-counter-container');
 
     let player_score_counter = document.createElement('p');
-    player_score_counter.textContent = `Player Score: `;
+    player_score_counter.textContent = `Player Score: ${player_score}`;
 
     let rounds_counter = document.createElement('p');
     rounds_counter.textContent = `Round: `;
 
     let computer_score_counter = document.createElement('p');
-    computer_score_counter.textContent = `Computer Score: `;
+    computer_score_counter.textContent = `Computer Score: ${computer_score}`;
 
     score_round_counter_container.appendChild(player_score_counter);
     score_round_counter_container.appendChild(rounds_counter);
@@ -74,47 +74,83 @@ play_button.addEventListener('click', function() {
     buttons_container.appendChild(paper_button);
     buttons_container.appendChild(scissor_button);
     game_container.appendChild(buttons_container);
-    
+
+    buttons_container.addEventListener('click', function(e) {
+        target_button = e.target;
+
+        let player_choice = '';
+        let computer_choice = '';
+        let game_result = '';
+
+        switch(target_button.id) {
+            case 'rock-button':
+                player_choice = 'rock';
+                computer_choice = CompChoice();
+                game_result = CompareChoice(player_choice, computer_choice);
+                break;
+
+            case 'paper-button':
+                player_choice = 'paper';
+                computer_choice = CompChoice();
+                game_result = CompareChoice(player_choice, computer_choice);
+                break;
+
+            case 'scissor-button':
+                player_choice = 'scissor';
+                computer_choice = CompChoice();
+                game_result = CompareChoice(player_choice, computer_choice);
+                break;
+        }
+
+        switch(game_result) {
+            case 'player win':
+                player_score += 1;
+                player_score_counter.textContent = `Player Score: ${player_score}`;
+                break;
+
+            case 'player loss':
+                computer_score += 1;
+                computer_score_counter.textContent = `Computer Score: ${computer_score}`;
+                break;
+
+            case 'tie':
+                break;
+        }
+    })
     body.appendChild(game_container);
 })
 
-// function CompareChoice (p_choice, c_choice) {
-//     if (p_choice === 'rock' && c_choice === 'rock') {
-//         alert(`Tie! Both You and the Computer Chose 'rock'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
-//     }
-//     else if (p_choice === 'rock' && c_choice === 'paper') {
-//         computer_score += 1;
-//         alert(`You Lose! You Chose 'rock' and the Computer Chose 'paper'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
-//     }
-//     else if (p_choice === 'rock' && c_choice === 'scissor') {
-//         player_score += 1;
-//         alert(`You Win! You Chose 'rock' and the Computer Chose 'scissor'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
-//     }
+function CompareChoice (p_choice, c_choice) {
+    if (p_choice === 'rock' && c_choice === 'rock') {
+        return 'tie';
+    }
+    else if (p_choice === 'rock' && c_choice === 'paper') {
+        return 'player loss';
+    }
+    else if (p_choice === 'rock' && c_choice === 'scissor') {
+        return "player win";
+    }
 
-//     else if (p_choice === 'paper' && c_choice === 'rock') {
-//         player_score += 1;
-//         alert(`You Win! You Chose 'paper' and the Computer Chose 'rock'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
-//     }
-//     else if (p_choice === 'paper' && c_choice === 'paper') {
-//         alert(`Tie! Both You and the Computer Chose 'paper'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
-//     }
-//     else if (p_choice === 'paper' && c_choice === 'scissor') {
-//         computer_score += 1;
-//         alert(`You Lose! You Chose 'paper' and the Computer Chose 'scissor'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
-//     }
+    else if (p_choice === 'paper' && c_choice === 'rock') {
+        return "player win";;
+    }
+    else if (p_choice === 'paper' && c_choice === 'paper') {
+        return 'tie';
+    }
+    else if (p_choice === 'paper' && c_choice === 'scissor') {
+        return 'player loss';
+    }
 
-//     else if (p_choice === 'scissor' && c_choice === 'rock') {
-//         computer_score += 1;
-//         alert(`You Lose! You Chose 'scissor' and the Computer Chose 'rock'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
-//     }
-//     else if (p_choice === 'scissor' && c_choice === 'paper') {
-//         player_score += 1;
-//         alert(`You Win! You Chose 'scissor' and the Computer Chose 'paper'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
-//     }
-//     else if (p_choice === 'scissor' && c_choice === 'scissor') {
-//         alert(`Tie! Both You and the Computer Chose 'scissor'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
-//     }
-// }
+    else if (p_choice === 'scissor' && c_choice === 'rock') {
+        return 'player loss';
+    }
+    else if (p_choice === 'scissor' && c_choice === 'paper') {
+        return "player win";;
+    }
+    else if (p_choice === 'scissor' && c_choice === 'scissor') {
+        return 'tie';
+    }
+}
 
 // while (player_score < 5 && computer_score < 5) {
 //     CompareChoice(PlayerChoice(), CompChoice());
