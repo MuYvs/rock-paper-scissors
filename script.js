@@ -19,6 +19,14 @@ function CompChoice(){
     return choice;
 }
 
+let body = document.querySelector("body")
+let start_container = document.querySelector(".start-container");
+let play_button = document.querySelector("#start-button");
+
+play_button.addEventListener('click', function() {
+    body.removeChild(start_container);
+})
+
 // function CompareChoice (p_choice, c_choice) {
 //     if (p_choice === 'rock' && c_choice === 'rock') {
 //         alert(`Tie! Both You and the Computer Chose 'rock'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
