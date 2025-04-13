@@ -19,7 +19,7 @@ function CompChoice(){
     return choice;
 }
 
-let body = document.querySelector("body")
+let body = document.querySelector("body");
 let start_container = document.querySelector(".start-container");
 let play_button = document.querySelector("#start-button");
 
@@ -27,6 +27,11 @@ play_button.addEventListener('click', function() {
     body.removeChild(start_container);
 })
 
+play_button.addEventListener('click', function() {
+    let game_container = document.createElement("div");
+    game_container.classList.add('container');
+
+})
 // function CompareChoice (p_choice, c_choice) {
 //     if (p_choice === 'rock' && c_choice === 'rock') {
 //         alert(`Tie! Both You and the Computer Chose 'rock'.\nYour score: ${player_score} | Computer score: ${computer_score}`);
