@@ -56,15 +56,18 @@ play_button.addEventListener('click', function() {
     buttons_container.classList.add('buttons-container');
     
     let rock_button = document.createElement('button');
-    rock_button.classList.add('option-button')
+    rock_button.setAttribute('id', 'rock-button');
+    rock_button.classList.add('option-button');
     rock_button.innerHTML = "&#9994";
 
     let paper_button = document.createElement('button');
-    paper_button.classList.add('option-button')
+    paper_button.setAttribute('id', 'paper-button');
+    paper_button.classList.add('option-button');
     paper_button.innerHTML = "&#9995";
 
     let scissor_button = document.createElement('button');
-    scissor_button.classList.add('option-button')
+    scissor_button.setAttribute('id', 'scissor-button');
+    scissor_button.classList.add('option-button');
     scissor_button.innerHTML = "&#9996";
 
     buttons_container.appendChild(rock_button);
