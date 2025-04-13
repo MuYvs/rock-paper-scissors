@@ -28,6 +28,7 @@ h1 {
 .game-container {
     width: 500px;
     display: flex;
+    justify-content: center;
 }
 .score-round-counter-container {
     display: grid;
@@ -55,4 +56,13 @@ h1 {
 }
 .game-status-text, .win-loss-header {
     white-space: pre;
+}
+#replay-button {
+    width: 75px;
+    height: 35px;
+}
+.replay-button-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }

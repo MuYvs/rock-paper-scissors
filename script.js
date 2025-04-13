@@ -2,9 +2,6 @@ function random(number) {
     return Math.floor(Math.random() * (number));
 }
 
-let player_score = 0;
-let computer_score = 0;
-let round = 0;
 function CompChoice(){
     let choice_num = random(3);
     let choice;
@@ -19,6 +16,43 @@ function CompChoice(){
     }
     return choice;
 }
+
+function CompareChoice (p_choice, c_choice) {
+    if (p_choice === 'rock' && c_choice === 'rock') {
+        return 'tie';
+    }
+    else if (p_choice === 'rock' && c_choice === 'paper') {
+        return 'player loss';
+    }
+    else if (p_choice === 'rock' && c_choice === 'scissor') {
+        return "player win";
+    }
+
+    else if (p_choice === 'paper' && c_choice === 'rock') {
+        return "player win";;
+    }
+    else if (p_choice === 'paper' && c_choice === 'paper') {
+        return 'tie';
+    }
+    else if (p_choice === 'paper' && c_choice === 'scissor') {
+        return 'player loss';
+    }
+
+    else if (p_choice === 'scissor' && c_choice === 'rock') {
+        return 'player loss';
+    }
+    else if (p_choice === 'scissor' && c_choice === 'paper') {
+        return "player win";;
+    }
+    else if (p_choice === 'scissor' && c_choice === 'scissor') {
+        return 'tie';
+    }
+}
+
+/*Global variables*/
+let player_score = 0;
+let computer_score = 0;
+let round = 0;
 
 let body = document.querySelector("body");
 let start_container = document.querySelector(".start-container");
@@ -89,7 +123,8 @@ play_button.addEventListener('click', function startGame() {
     game_status_container.appendChild(game_status_text);
 
     game_container.appendChild(game_status_container);
-    game_container.appendChild(game_status_container);
+
+    body.appendChild(game_container);
 
     buttons_container.addEventListener('click', function activeButtons(e) {
         target_button = e.target;
@@ -152,11 +187,16 @@ play_button.addEventListener('click', function startGame() {
             player_score = 0;
             computer_score = 0;
             round = 0;
+
+            let replay_button_container = document.createElement('div');
+            replay_button_container.classList.add('replay-button-container');
+
             let replay_button = document.createElement('button');
             replay_button.textContent = "Replay";
             replay_button.setAttribute('id', 'replay-button');
 
-            game_container.appendChild(replay_button);
+            replay_button_container.appendChild(replay_button);
+            game_container.appendChild(replay_button_container);
 
             replay_button.addEventListener('click', () => {
                 body.removeChild(game_container);
@@ -171,11 +211,16 @@ play_button.addEventListener('click', function startGame() {
             player_score = 0;
             computer_score = 0;
             round = 0;
+
+            let replay_button_container = document.createElement('div');
+            replay_button_container.classList.add('replay-button-container');
+            
             let replay_button = document.createElement('button');
             replay_button.textContent = "Replay";
             replay_button.setAttribute('id', 'replay-button');
 
-            game_container.appendChild(replay_button);
+            replay_button_container.appendChild(replay_button);
+            game_container.appendChild(replay_button_container);
 
             replay_button.addEventListener('click', () => {
                 body.removeChild(game_container);
@@ -183,37 +228,4 @@ play_button.addEventListener('click', function startGame() {
             replay_button.addEventListener('click', startGame);
         }
     })
-    body.appendChild(game_container);
 })
-
-function CompareChoice (p_choice, c_choice) {
-    if (p_choice === 'rock' && c_choice === 'rock') {
-        return 'tie';
-    }
-    else if (p_choice === 'rock' && c_choice === 'paper') {
-        return 'player loss';
-    }
-    else if (p_choice === 'rock' && c_choice === 'scissor') {
-        return "player win";
-    }
-
-    else if (p_choice === 'paper' && c_choice === 'rock') {
-        return "player win";;
-    }
-    else if (p_choice === 'paper' && c_choice === 'paper') {
-        return 'tie';
-    }
-    else if (p_choice === 'paper' && c_choice === 'scissor') {
-        return 'player loss';
-    }
-
-    else if (p_choice === 'scissor' && c_choice === 'rock') {
-        return 'player loss';
-    }
-    else if (p_choice === 'scissor' && c_choice === 'paper') {
-        return "player win";;
-    }
-    else if (p_choice === 'scissor' && c_choice === 'scissor') {
-        return 'tie';
-    }
-}
