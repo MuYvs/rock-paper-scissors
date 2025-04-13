@@ -53,6 +53,6 @@ h1 {
 .game-status-container {
     text-align: center;
 }
-.game-status-text {
+.game-status-text, .win-loss-header {
     white-space: pre;
 }

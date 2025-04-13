@@ -78,9 +78,11 @@ play_button.addEventListener('click', function() {
     let game_status_container = document.createElement('div');
     game_status_container.classList.add('game-status-container');
     let win_loss = document.createElement('h2');
-    win_loss.classList.add('win-loss-header')
+    win_loss.classList.add('win-loss-header');
+    win_loss.textContent = '\r\n'
     let game_status_text = document.createElement('p');
     game_status_text.classList.add('game-status-text');
+    game_status_text.textContent = "\r\n\r\n";
 
     game_status_container.appendChild(win_loss);
     game_status_container.appendChild(game_status_text);
