@@ -4,6 +4,7 @@ function random(number) {
 
 let player_score = 0;
 let computer_score = 0;
+let round = 0;
 function CompChoice(){
     let choice_num = random(3);
     let choice;
@@ -42,7 +43,7 @@ play_button.addEventListener('click', function() {
     player_score_counter.textContent = `Player Score: ${player_score}`;
 
     let rounds_counter = document.createElement('p');
-    rounds_counter.textContent = `Round: `;
+    rounds_counter.textContent = `Round: ${round}`;
 
     let computer_score_counter = document.createElement('p');
     computer_score_counter.textContent = `Computer Score: ${computer_score}`;
@@ -87,6 +88,9 @@ play_button.addEventListener('click', function() {
     game_status_container.appendChild(win_loss);
     game_status_container.appendChild(game_status_text);
 
+    game_container.appendChild(game_status_container);
+    game_container.appendChild(game_status_container);
+
     buttons_container.addEventListener('click', function(e) {
         target_button = e.target;
 
@@ -117,6 +121,8 @@ play_button.addEventListener('click', function() {
         switch(game_result) {
             case 'player win':
                 player_score += 1;
+                round += 1;
+                rounds_counter.textContent = `Round: ${round}`;
                 player_score_counter.textContent = `Player Score: ${player_score}`;
                 win_loss.textContent = "You won the round";
                 game_status_text.textContent = `You chose: ${player_choice}\r\nOpponent chose: ${computer_choice}`
@@ -124,6 +130,8 @@ play_button.addEventListener('click', function() {
 
             case 'player loss':
                 computer_score += 1;
+                round += 1;
+                rounds_counter.textContent = `Round: ${round}`;
                 computer_score_counter.textContent = `Computer Score: ${computer_score}`;
                 win_loss.textContent = "You lost the round";
                 game_status_text.textContent = `You chose: ${player_choice}\r\nOpponent chose: ${computer_choice}`
@@ -131,11 +139,14 @@ play_button.addEventListener('click', function() {
 
             case 'tie':
                 win_loss.textContent = "It's a tie";
+                round += 1;
+                rounds_counter.textContent = `Round: ${round}`;
                 game_status_text.textContent = `You chose: ${player_choice}\r\nOpponent chose: ${computer_choice}`
                 break;
         }
     })
-    game_container.appendChild(game_status_container);
+
+    
     body.appendChild(game_container);
 })
 
