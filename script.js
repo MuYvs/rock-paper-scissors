@@ -54,12 +54,12 @@ let player_score = 0;
 let computer_score = 0;
 let round = 0;
 
-let body = document.querySelector("body");
+let main_container = document.querySelector(".main-container");
 let start_container = document.querySelector(".start-container");
 let play_button = document.querySelector("#start-button");
 
 play_button.addEventListener('click', function() {
-    body.removeChild(start_container);
+    main_container.removeChild(start_container);
 })
 
 play_button.addEventListener('click', function startGame() {
@@ -124,7 +124,7 @@ play_button.addEventListener('click', function startGame() {
 
     game_container.appendChild(game_status_container);
 
-    body.appendChild(game_container);
+    main_container.appendChild(game_container);
 
     buttons_container.addEventListener('click', function activeButtons(e) {
         target_button = e.target;
@@ -199,7 +199,7 @@ play_button.addEventListener('click', function startGame() {
             game_container.appendChild(replay_button_container);
 
             replay_button.addEventListener('click', () => {
-                body.removeChild(game_container);
+                main_container.removeChild(game_container);
             });
             replay_button.addEventListener('click', startGame);
         }
@@ -214,7 +214,7 @@ play_button.addEventListener('click', function startGame() {
 
             let replay_button_container = document.createElement('div');
             replay_button_container.classList.add('replay-button-container');
-            
+
             let replay_button = document.createElement('button');
             replay_button.textContent = "Replay";
             replay_button.setAttribute('id', 'replay-button');
@@ -223,7 +223,7 @@ play_button.addEventListener('click', function startGame() {
             game_container.appendChild(replay_button_container);
 
             replay_button.addEventListener('click', () => {
-                body.removeChild(game_container);
+                main_container.removeChild(game_container);
             });
             replay_button.addEventListener('click', startGame);
         }
