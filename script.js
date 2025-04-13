@@ -47,11 +47,31 @@ play_button.addEventListener('click', function() {
     let computer_score_counter = document.createElement('p');
     computer_score_counter.textContent = `Computer Score: `;
 
-    score_round_counter_container.appendChild(player_score_counter)
-    score_round_counter_container.appendChild(rounds_counter)
-    score_round_counter_container.appendChild(computer_score_counter)
-
+    score_round_counter_container.appendChild(player_score_counter);
+    score_round_counter_container.appendChild(rounds_counter);
+    score_round_counter_container.appendChild(computer_score_counter);
     game_container.appendChild(score_round_counter_container);
+
+    let buttons_container = document.createElement('div');
+    buttons_container.classList.add('buttons-container');
+    
+    let rock_button = document.createElement('button');
+    rock_button.classList.add('option-button')
+    rock_button.innerHTML = "&#9994";
+
+    let paper_button = document.createElement('button');
+    paper_button.classList.add('option-button')
+    paper_button.innerHTML = "&#9995";
+
+    let scissor_button = document.createElement('button');
+    scissor_button.classList.add('option-button')
+    scissor_button.innerHTML = "&#9996";
+
+    buttons_container.appendChild(rock_button);
+    buttons_container.appendChild(paper_button);
+    buttons_container.appendChild(scissor_button);
+    game_container.appendChild(buttons_container);
+    
     body.appendChild(game_container);
 })
 
