@@ -74,13 +74,16 @@ play_button.addEventListener('click', function startGame() {
     score_round_counter_container.classList.add('score-round-counter-container');
 
     let player_score_counter = document.createElement('p');
+    player_score_counter.classList.add('counter');
     player_score_counter.textContent = `Player Score: ${player_score}`;
 
     let rounds_counter = document.createElement('p');
+    rounds_counter.classList.add('counter');
     rounds_counter.textContent = `Round: ${round}`;
 
     let computer_score_counter = document.createElement('p');
-    computer_score_counter.textContent = `Computer Score: ${computer_score}`;
+    computer_score_counter.classList.add('counter');
+    computer_score_counter.textContent = `CPU Score: ${computer_score}`;
 
     score_round_counter_container.appendChild(player_score_counter);
     score_round_counter_container.appendChild(rounds_counter);
@@ -167,7 +170,7 @@ play_button.addEventListener('click', function startGame() {
                 computer_score += 1;
                 round += 1;
                 rounds_counter.textContent = `Round: ${round}`;
-                computer_score_counter.textContent = `Computer Score: ${computer_score}`;
+                computer_score_counter.textContent = `CPU Score: ${computer_score}`;
                 win_loss.textContent = "You lost the round";
                 game_status_text.textContent = `You chose: ${player_choice}\r\nOpponent chose: ${computer_choice}`
                 break;
