@@ -28,7 +28,7 @@ play_button.addEventListener('click', function() {
     body.removeChild(start_container);
 })
 
-play_button.addEventListener('click', function() {
+play_button.addEventListener('click', function startGame() {
     let game_container = document.createElement('div');
     game_container.classList.add('container', 'game-container');
 
@@ -144,17 +144,45 @@ play_button.addEventListener('click', function() {
                 game_status_text.textContent = `You chose: ${player_choice}\r\nOpponent chose: ${computer_choice}`
                 break;
         }
+
         if(player_score >= 5) {
             buttons_container.removeEventListener('click', activeButtons);
             win_loss.textContent = "You Won The Game!";
+
+            player_score = 0;
+            computer_score = 0;
+            round = 0;
+            let replay_button = document.createElement('button');
+            replay_button.textContent = "Replay";
+            replay_button.setAttribute('id', 'replay-button');
+
+            game_container.appendChild(replay_button);
+
+            replay_button.addEventListener('click', () => {
+                body.removeChild(game_container);
+            });
+            replay_button.addEventListener('click', startGame);
         }
+
         else if(computer_score >= 5) {
             buttons_container.removeEventListener('click', activeButtons);
             win_loss.textContent = "You Lost The Game!";
+
+            player_score = 0;
+            computer_score = 0;
+            round = 0;
+            let replay_button = document.createElement('button');
+            replay_button.textContent = "Replay";
+            replay_button.setAttribute('id', 'replay-button');
+
+            game_container.appendChild(replay_button);
+
+            replay_button.addEventListener('click', () => {
+                body.removeChild(game_container);
+            });
+            replay_button.addEventListener('click', startGame);
         }
     })
-
-
     body.appendChild(game_container);
 })
 
@@ -189,14 +217,3 @@ function CompareChoice (p_choice, c_choice) {
         return 'tie';
     }
 }
-
-// while (player_score < 5 && computer_score < 5) {
-//     CompareChoice(PlayerChoice(), CompChoice());
-// }
-
-// if (player_score >= 5) {
-//     alert("You Won!");
-// }
-// else if (computer_score >= 5) {
-//     alert("You Lost!");
-// }
