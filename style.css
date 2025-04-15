@@ -161,4 +161,9 @@ button:active {
         height: fit-content;
     }
 }
+@media (max-height: 540px) {
+    .main-container {
+        top: 0;
+    }
+}
 
