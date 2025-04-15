@@ -19,7 +19,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     font-family: poppins, roboto, sans-serif;
     background-color: var(--yellow);
     color: aliceblue;
